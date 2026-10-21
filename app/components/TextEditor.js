@@ -41,7 +41,7 @@ export default function TextEditor({ content, onChange }) {
     editorProps: {
       attributes: {
         class:
-          "prose max-w-none focus:outline-none outline-none min-h-[280px] p-5 text-slate-800 text-base leading-relaxed",
+          "prose max-w-none focus:outline-none outline-none min-h-[220px] sm:min-h-[280px] p-3.5 sm:p-5 text-slate-800 text-sm sm:text-base leading-relaxed break-words",
         "data-placeholder": "Start writing your narrative...",
       },
     },
@@ -94,13 +94,13 @@ export default function TextEditor({ content, onChange }) {
   return (
     <div className="rounded-2xl border border-slate-200 overflow-hidden bg-white shadow-xs focus-within:border-indigo-400 focus-within:ring-2 focus-within:ring-indigo-100 transition-all">
       {/* Sleek Toolbar */}
-      <div className="flex flex-wrap items-center gap-1.5 p-2.5 bg-slate-50 border-b border-slate-200">
+      <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 p-2 sm:p-2.5 bg-slate-50 border-b border-slate-200">
         {/* Bold */}
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
           title="Bold (Ctrl+B)"
-          className={`p-2 rounded-lg text-xs font-bold transition cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs font-bold transition cursor-pointer ${
             editor.isActive("bold")
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -114,7 +114,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           title="Italic (Ctrl+I)"
-          className={`p-2 rounded-lg text-xs transition cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition cursor-pointer ${
             editor.isActive("italic")
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -128,7 +128,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().toggleUnderline().run()}
           title="Underline (Ctrl+U)"
-          className={`p-2 rounded-lg text-xs transition cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition cursor-pointer ${
             editor.isActive("underline")
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -176,7 +176,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           title="Dotted Bullet List"
-          className={`p-2 rounded-lg text-xs transition flex items-center justify-center cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition flex items-center justify-center cursor-pointer ${
             editor.isActive("bulletList")
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -190,7 +190,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           title="Numeric Numbered List"
-          className={`p-2 rounded-lg text-xs transition flex items-center justify-center cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition flex items-center justify-center cursor-pointer ${
             editor.isActive("orderedList")
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -204,7 +204,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           title="Quote"
-          className={`p-2 rounded-lg text-xs transition cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition cursor-pointer ${
             editor.isActive("blockquote")
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -218,7 +218,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().toggleHighlight().run()}
           title="Highlight Text"
-          className={`p-2 rounded-lg text-xs transition cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition cursor-pointer ${
             editor.isActive("highlight")
               ? "bg-amber-400 text-slate-900 shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -234,7 +234,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={setLink}
           title="Add Link"
-          className={`p-2 rounded-lg text-xs transition cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition cursor-pointer ${
             editor.isActive("link")
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -248,7 +248,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={addImage}
           title="Embed Image URL"
-          className="p-2 rounded-lg text-xs text-slate-700 hover:bg-slate-200/80 transition cursor-pointer"
+          className="p-1.5 sm:p-2 rounded-lg text-xs text-slate-700 hover:bg-slate-200/80 transition cursor-pointer"
         >
           <span className="material-symbols-outlined text-base">image</span>
         </button>
@@ -260,7 +260,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().setTextAlign("left").run()}
           title="Align Left"
-          className={`p-2 rounded-lg text-xs transition cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition cursor-pointer ${
             editor.isActive({ textAlign: "left" })
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -273,7 +273,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().setTextAlign("center").run()}
           title="Align Center"
-          className={`p-2 rounded-lg text-xs transition cursor-pointer ${
+          className={`p-1.5 sm:p-2 rounded-lg text-xs transition cursor-pointer ${
             editor.isActive({ textAlign: "center" })
               ? "bg-indigo-600 text-white shadow-xs"
               : "text-slate-700 hover:bg-slate-200/80"
@@ -289,7 +289,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().undo().run()}
           title="Undo (Ctrl+Z)"
-          className="p-2 rounded-lg text-xs text-slate-700 hover:bg-slate-200/80 transition cursor-pointer"
+          className="p-1.5 sm:p-2 rounded-lg text-xs text-slate-700 hover:bg-slate-200/80 transition cursor-pointer"
         >
           <span className="material-symbols-outlined text-base">undo</span>
         </button>
@@ -297,7 +297,7 @@ export default function TextEditor({ content, onChange }) {
           type="button"
           onClick={() => editor.chain().focus().redo().run()}
           title="Redo (Ctrl+Y)"
-          className="p-2 rounded-lg text-xs text-slate-700 hover:bg-slate-200/80 transition cursor-pointer"
+          className="p-1.5 sm:p-2 rounded-lg text-xs text-slate-700 hover:bg-slate-200/80 transition cursor-pointer"
         >
           <span className="material-symbols-outlined text-base">redo</span>
         </button>

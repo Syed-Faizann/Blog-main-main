@@ -288,9 +288,24 @@ export default function UserProfileModal({ isOpen, onClose }) {
                 <p className="text-[11px] text-slate-400 mb-3">
                   JPG, PNG or WEBP (up to 4MB)
                 </p>
-                <div className="scale-90 origin-center">
+                <div className="w-full max-w-full flex justify-center">
                   <UploadButton
                     endpoint="imageUploader"
+                    appearance={{
+                      button:
+                        "bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md shadow-indigo-600/30 transition-all cursor-pointer flex items-center justify-center gap-1.5 max-w-full text-center",
+                      allowedContent: "text-xs text-slate-500 font-medium mt-2 text-center",
+                    }}
+                    content={{
+                      button({ ready, isUploading }) {
+                        if (isUploading) return "Uploading...";
+                        if (ready) return "📁 Choose Photo";
+                        return "Preparing...";
+                      },
+                      allowedContent() {
+                        return "PNG, JPG, WEBP (up to 4MB)";
+                      },
+                    }}
                     onClientUploadComplete={(res) => {
                       if (res && res[0]) {
                         const url = res[0].ufsUrl || res[0].url;

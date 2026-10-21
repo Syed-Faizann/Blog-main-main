@@ -13,11 +13,11 @@ export default function Navbar() {
   const [profileModalOpen, setProfileModalOpen] = useState(false);
 
   return (
-    <header className="sticky top-4 z-50 px-4 sm:px-8 max-w-7xl mx-auto w-full transition-all">
-      <nav className="glass-nav rounded-2xl px-5 py-3 sm:px-6 sm:py-3.5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex items-center justify-between transition-all">
+    <header className="sticky top-2 sm:top-4 z-50 px-3 sm:px-8 max-w-7xl mx-auto w-full transition-all">
+      <nav className="glass-nav rounded-2xl px-3 sm:px-6 py-2.5 sm:py-3.5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] flex items-center justify-between transition-all">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-500 p-0.5 shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-500 p-0.5 shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300 shrink-0">
             <div className="w-full h-full bg-white rounded-[10px] overflow-hidden flex items-center justify-center">
               <Image
                 src={logo}
@@ -29,7 +29,7 @@ export default function Navbar() {
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors">
+            <span className="font-extrabold text-base sm:text-xl tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors">
               Chronicle<span className="text-indigo-600">.</span>
             </span>
             <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-400 hidden sm:block -mt-1">
@@ -83,9 +83,9 @@ export default function Navbar() {
         </nav>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {session ? (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-3">
               <Link
                 href="/my-posts"
                 className="hidden lg:inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 px-3 py-1.5 rounded-xl hover:bg-slate-100 transition"
@@ -96,14 +96,14 @@ export default function Navbar() {
               </Link>
 
               {/* User badge - Clicking opens Account Details & Change Image Modal */}
-              <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
+              <div className="flex items-center gap-1 sm:gap-2 pl-1.5 sm:pl-2 border-l border-slate-200">
                 <button
                   type="button"
                   onClick={() => setProfileModalOpen(true)}
                   title="Click to view Account Details & Change Photo"
-                  className="group flex items-center gap-2 p-1 rounded-xl hover:bg-slate-100 transition cursor-pointer text-left"
+                  className="group flex items-center gap-1.5 p-1 rounded-xl hover:bg-slate-100 transition cursor-pointer text-left"
                 >
-                  <div className="relative w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 p-0.5 flex items-center justify-center text-xs font-bold text-white shadow-xs group-hover:scale-105 transition-transform">
+                  <div className="relative w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 p-0.5 flex items-center justify-center text-xs font-bold text-white shadow-xs group-hover:scale-105 transition-transform shrink-0">
                     {session.user?.image ? (
                       <Image
                         src={session.user.image}
@@ -123,7 +123,7 @@ export default function Navbar() {
                       {session.user.name.split(" ")[0]}
                     </span>
                   )}
-                  <span className="material-symbols-outlined text-slate-400 text-sm hidden md:inline group-hover:text-indigo-600 transition-colors">
+                  <span className="material-symbols-outlined text-slate-400 text-sm hidden md:inline-block group-hover:text-indigo-600 transition-colors">
                     expand_more
                   </span>
                 </button>
@@ -131,23 +131,23 @@ export default function Navbar() {
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
                   title="Sign Out"
-                  className="text-slate-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
+                  className="text-slate-400 hover:text-rose-500 p-1 sm:p-1.5 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-xl">logout</span>
+                  <span className="material-symbols-outlined text-lg sm:text-xl">logout</span>
                 </button>
               </div>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <Link
                 href="/login"
-                className="text-slate-600 hover:text-slate-900 font-semibold text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-xl hover:bg-slate-100/80 transition-colors"
+                className="text-slate-600 hover:text-slate-900 font-semibold text-xs sm:text-sm px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl hover:bg-slate-100/80 transition-colors"
               >
                 Sign In
               </Link>
               <Link
                 href="/register"
-                className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl shadow-sm shadow-indigo-500/25 hover:shadow-md hover:shadow-indigo-500/35 transition-all transform hover:-translate-y-0.5"
+                className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-sm shadow-indigo-500/25 hover:shadow-md hover:shadow-indigo-500/35 transition-all transform hover:-translate-y-0.5"
               >
                 Get Started
               </Link>

@@ -6,13 +6,23 @@
   --foreground: #0f172a;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure hidden utility always wins over external icon font display styles */
+.hidden {
+  display: none !important;
 }
 
 /* Custom selection */
@@ -255,27 +265,61 @@ body {
   display: inline;
 }
 
-/* UploadThing Button High-Visibility Overrides */
+/* Screen-reader utility (vital for UploadThing and accessible file inputs) */
+.sr-only,
+[data-ut-element="button"] input[type="file"],
+.ut-button input[type="file"],
+label[data-ut-element="button"] input[type="file"] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* UploadThing Button High-Visibility & Responsive Overrides */
+[data-ut-element="button-container"] {
+  max-width: 100% !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 .ut-button,
 [data-ut-element="button"],
-button[data-ut-element="button"] {
+button[data-ut-element="button"],
+label[data-ut-element="button"] {
   background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 0.875rem !important;
   border-radius: 0.75rem !important;
-  padding: 0.75rem 1.75rem !important;
+  padding: 0.75rem 1.5rem !important;
   box-shadow: 0 4px 15px rgba(79, 70, 229, 0.35) !important;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   border: none !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  text-align: center !important;
   transition: all 0.2s ease !important;
 }
 
 .ut-button:hover,
-[data-ut-element="button"]:hover {
+[data-ut-element="button"]:hover,
+label[data-ut-element="button"]:hover {
   transform: translateY(-1px) !important;
   box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45) !important;
 }
@@ -284,6 +328,8 @@ button[data-ut-element="button"] {
   color: #64748b !important;
   font-size: 0.75rem !important;
   margin-top: 0.5rem !important;
+  text-align: center !important;
+  max-width: 100% !important;
 }
 
 .prose img {
@@ -298,12 +344,18 @@ button[data-ut-element="button"] {
   display: flex !important;
 }
 
+.mobile-hamburger-btn {
+  display: none;
+}
+
 @media (max-width: 639px) {
   .main-nav-container {
     display: none !important;
   }
   .mobile-hamburger-btn {
-    display: flex !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
   }
 }
 

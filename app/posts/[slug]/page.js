@@ -172,7 +172,7 @@ export default async function PostPage({ params: rawParams }) {
             </h1>
 
             {/* Author Byline Bar (Audio option removed per request) */}
-            <div className="flex items-center justify-between py-4 px-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-3.5 sm:py-4 px-4 sm:px-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs">
               <div className="flex items-center gap-3.5">
                 <Link
                   href={post.author?.id ? `/authors/${post.author.id}` : "#"}
