@@ -363,7 +363,7 @@ export default async function PostPage({ params: rawParams }) {
             </article>
 
             {/* Right Sticky Sidebar with working TableOfContents & working Links */}
-            <aside className="lg:col-span-4 w-full space-y-8 sticky top-24">
+            <aside className="lg:col-span-4 w-full space-y-8 lg:sticky lg:top-24 lg:self-start lg:h-fit lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto sidebar-scroll pr-1">
               {/* Fully Functional Table of Contents */}
               <TableOfContents />
 
